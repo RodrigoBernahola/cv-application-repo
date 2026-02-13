@@ -5,6 +5,11 @@
   text-align: center;
 }
 
+input, label {
+  margin: 2px;
+  padding: 2px;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
