@@ -1,3 +1,5 @@
+import '../styles/CV.css'
+
 export default function CV({formState, onClick}) {
 
     function handleClick() {
@@ -10,28 +12,27 @@ export default function CV({formState, onClick}) {
     return (
         <main>
             <section>
-                <h3>Personal information</h3>
-                <h2>{formState.formObject.generalInfo.name}</h2>
-                <p>Contact me via email at: {formState.formObject.generalInfo.email}</p>
-                <p>My phone number is: {formState.formObject.generalInfo.phoneNumber}</p>
+                <h3>Personal Information</h3>
+                <h2>{formState.formObject.generalInfo.name || 'Your Name'}</h2>
+                <p>{formState.formObject.generalInfo.email || 'email@example.com'}</p>
+                <p>{formState.formObject.generalInfo.phoneNumber || '+123 456 789'}</p>
             </section>
             <section>
-                <h3>Educational experience</h3>
-                <p>School name: {formState.formObject.educationalInfo.school}</p>
-                <p>TItle of study: {formState.formObject.educationalInfo.title}</p>
-                <p>Date of study: {formState.formObject.educationalInfo.date}</p>
+                <h3>Educational Experience</h3>
+                <p><strong>School:</strong> {formState.formObject.educationalInfo.school || 'Not specified'}</p>
+                <p><strong>Title of Study:</strong> {formState.formObject.educationalInfo.title || 'Not specified'}</p>
+                <p><strong>Date:</strong> {formState.formObject.educationalInfo.date || 'Not specified'}</p>
             </section>
             <section>
-                <h3>Practical experience</h3>
-                <p>Company name: {formState.formObject.practicalInfo.company}</p>
-                <p>Position title: {formState.formObject.practicalInfo.position}</p>
-                <p>Main responsibilites at the company: {formState.formObject.practicalInfo.responsibilities}</p>
-                <p>Date from: {formState.formObject.practicalInfo.dateStart}</p>
-                <p>Until: {formState.formObject.practicalInfo.dateEnd}</p>
+                <h3>Practical Experience</h3>
+                <p><strong>Company:</strong> {formState.formObject.practicalInfo.company || 'Not specified'}</p>
+                <p><strong>Position:</strong> {formState.formObject.practicalInfo.position || 'Not specified'}</p>
+                <p><strong>Responsibilities:</strong> {formState.formObject.practicalInfo.responsibilities || 'Not specified'}</p>
+                <p><strong>Period:</strong> {formState.formObject.practicalInfo.dateStart || 'N/A'} - {formState.formObject.practicalInfo.dateEnd || 'N/A'}</p>
             </section>
 
             <button type="button" onClick={handleClick}>
-                Edit your Information
+                Edit Your Information
             </button>
         </main>
     )

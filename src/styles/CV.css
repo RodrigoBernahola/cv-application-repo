@@ -1,0 +1,74 @@
+/* Estilos específicos del CV */
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+main {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Efecto hover en secciones */
+main section {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+main section:hover {
+  transform: translateX(4px);
+}
+
+/* Estilo para texto en negrita */
+main section p strong {
+  display: inline-block;
+  min-width: 140px;
+  color: var(--text-primary);
+}
+
+/* Animación del botón */
+main > button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+main > button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: rgba(37, 99, 235, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+main > button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Íconos decorativos para las secciones (usando Unicode) */
+main section:nth-of-type(1) h3::before {
+  content: '👤 ';
+  margin-right: var(--spacing-sm);
+}
+
+main section:nth-of-type(2) h3::before {
+  content: '🎓 ';
+  margin-right: var(--spacing-sm);
+}
+
+main section:nth-of-type(3) h3::before {
+  content: '💼 ';
+  margin-right: var(--spacing-sm);
+}
