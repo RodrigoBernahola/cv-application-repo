@@ -5,20 +5,24 @@ import GeneralInformationFieldset from './GeneralInformationFieldset.jsx';
 import EducationalInformationFieldset from './EducationalInformationFieldset.jsx';
 import PracticalExperienceFieldset from './PracticalExperienceFieldset.jsx';
 
-function Form() {
-  const [generalInfo, setGeneralInfo] = useState({name: '', email: '', phoneNumber: ''});
-  const [educationalInfo, setEducationalInfo] = useState({school: '', title: '', date: ''});
-  const [practicalInfo, setPracticalInfo] = useState({company: '', position: '', responsibilities: '', dateStart: '', dateEnd: ''});
+export default function Form({state, onSubmit}) {
+  const [generalInfo, setGeneralInfo] = useState(state.formObject.generalInfo);
+  const [educationalInfo, setEducationalInfo] = useState(state.formObject.educationalInfo);
+  const [practicalInfo, setPracticalInfo] = useState(state.formObject.practicalInfo);
+
+  function handleSubmit() {
+    onSubmit({isEditing: !state, formObject: {generalInfo, educationalInfo, practicalInfo}})
+  }
+
 
   return (
-    <form action=""> 
-      < GeneralInformationFieldset generalInfo={generalInfo} onChange={setGeneralInfo}/>
-      < EducationalInformationFieldset educationalInfo={educationalInfo} onChange={setEducationalInfo} />
-      < PracticalExperienceFieldset practicalInfo={practicalInfo} onChange={setPracticalInfo} />
-      <button>Edit form data</button>
-      <button>Submit form</button>
+    <form> 
+        < GeneralInformationFieldset generalInfo={generalInfo} onChange={setGeneralInfo}/>
+        < EducationalInformationFieldset educationalInfo={educationalInfo} onChange={setEducationalInfo} />
+        < PracticalExperienceFieldset practicalInfo={practicalInfo} onChange={setPracticalInfo} />
+        <button type="button" onClick={handleSubmit} >
+          Submit form
+        </button>
     </form>
   )
 }
-
-export default Form
