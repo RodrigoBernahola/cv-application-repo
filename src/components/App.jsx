@@ -24,16 +24,64 @@ export default function App() {
             dateEnd: ''
         }
     }});
-    
-    return (
 
+    function updateGeneralInfo(newGeneralInfo) {
+    setFormState({
+        ...formState,
+        formObject: {
+        ...formState.formObject,
+        generalInfo: newGeneralInfo
+        }
+    });
+    }
+
+    function updateEducationalInfo(newEducationalInfo) {
+    setFormState({
+        ...formState,
+        formObject: {
+        ...formState.formObject,
+        educationalInfo: newEducationalInfo
+        }
+    });
+    }
+
+    function updatePracticalInfo(newPracticalInfo) {
+    setFormState({
+        ...formState,
+        formObject: {
+        ...formState.formObject,
+        practicalInfo: newPracticalInfo
+        }
+    });
+    }
+
+    function handleSubmit() {
+    setFormState({
+        ...formState,
+        isEditing: false
+    });
+    }
+    
+    function handleEdit() {
+        setFormState({
+            ...formState,
+            isEditing: true
+        });
+    }
+
+    return (
         <>
             {formState.isEditing
-            ? < Form state={formState} onSubmit={setFormState}/>
-            : < CV formState={formState} onClick={setFormState}/>
+            ? <Form 
+                formObject={formState.formObject}
+                onUpdateGeneral={updateGeneralInfo}
+                onUpdateEducational={updateEducationalInfo}
+                onUpdatePractical={updatePracticalInfo}
+                onSubmit={handleSubmit}
+                />
+            : <CV formState={formState} onClick={handleEdit} />
             }
         </>
-
     )
 
 }
